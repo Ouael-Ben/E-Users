@@ -1,9 +1,10 @@
 import React from 'react'
-
-export default function index() {
+import withAuthenticated from '../../../components/HOC/Authenticated';
+function AddUser() {
     return (
         <div>
             Hello from new User
         </div>
     )
 }
+export default withAuthenticated(AddUser)
