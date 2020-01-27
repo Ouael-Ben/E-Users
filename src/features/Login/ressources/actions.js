@@ -7,10 +7,9 @@ export const loginUser = user => {
         payload: user
     }
 }
-export const loginUserSuccefull = user => {
+export const loginUserSuccefull = () => {
     return {
         type: LOGIN_SUCCEFULL,
-        payload: user
     }
 }
 export const loginUserFailed = error => {

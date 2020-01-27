@@ -9,13 +9,8 @@ function* AuthenticatingUser(values){
     try {
         const {login,password, history} = values.payload
         const token = yield call(authenticateUser,{login,password});
-        const user = {
-            login: values.payload.login,
-            token: token.token,
-            authenticated: true
-        }
         yield AccesTokenStorage.set(token.token);
-        yield put(loginUserSuccefull(user));
+        yield put(loginUserSuccefull());
         yield call(forwardTo,history,'/users'); 
     }catch(e){
         if(isNetworkError(e))
