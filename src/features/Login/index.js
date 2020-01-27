@@ -1,5 +1,5 @@
 import React from 'react'
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import { useDispatch,useSelector } from "react-redux";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -11,6 +11,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { loginUser } from './ressources/actions';
 import { useHistory } from "react-router-dom";
+import Loading from '../../components/Loader/loading';
+import AuthUtils from '../../utils/auth/isAuth';
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -43,9 +45,13 @@ function Login(props) {
     const history = useHistory();
     const [login, setlogin] = useState('');
     const [password, setPassword] = useState('');
-    const {error} = useSelector(state =>state.Login);
-
+    const {error, isLoading} = useSelector(state =>state.Login);
     
+
+    useEffect(() => {
+      if(AuthUtils.isAuth())
+        history.push('/users');
+    })
     const handleSubmit = (e) => {
         e.preventDefault();
         const user  = {
@@ -100,7 +106,7 @@ function Login(props) {
             className={classes.submit}
             onClick= {handleSubmit}
           >
-            Sign In
+            { isLoading ?  <Loading isLoading='true' size={15} color="white"/> : 'Sign in'}
           </Button>
           
           <div>

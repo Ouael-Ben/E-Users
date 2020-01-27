@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import MyMenu from '../Menu/MyMenu';
-
+import {useSelector} from 'react-redux';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -25,11 +25,11 @@ const useStyles = makeStyles((theme) =>
 export default function Header() {
 
     const classes = useStyles();
-    const auth = false;
+    const {authenticated} = useSelector(state => state.Login);
     return (
         <Fragment>
             {
-                    auth && <AppBar position="static">
+                    authenticated && <AppBar position="static">
                                 <Toolbar>
                                 <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                                     <MenuIcon />

@@ -24,6 +24,7 @@ export default (state = initialState, action) => {
                 const {user} =  {...parsedToken};
                 return {...state,user: user, authenticated:true}
             }
+            return {...state};
             break;
             
         default:

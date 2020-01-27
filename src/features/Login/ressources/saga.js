@@ -13,8 +13,10 @@ function* AuthenticatingUser(values){
         yield put(loginUserSuccefull());
         yield call(forwardTo,history,'/users'); 
     }catch(e){
-        if(isNetworkError(e))
+        if(isNetworkError(e)){
             alert("Network error")
+            yield put(loginUserFailed("Error internal"));
+        }
         else {
             if(e.response.status === 401)
                 yield put(loginUserFailed("Le Login ou le mot de passe ne correspond à aucun compte."));
