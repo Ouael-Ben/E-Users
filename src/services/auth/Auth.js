@@ -10,3 +10,11 @@ export const authenticateUser = async (user) => {
                 })
                 .catch(err => {throw err;});
 }
+
+export const SignUpUserService = async (user) => {
+    return await axios.post(`${BASE_URL_API}/Users`,user)
+                 .then(res => {
+                    
+                 })
+                 .catch(err => {throw err});
+}

@@ -1,0 +1,3 @@
+export const SIGN_UP_USER = 'SIGN_UP_USER';
+export const SIGN_UP_SUCCEFULL = 'SIGN_UP_SUCCEFULL';
+export const SIGN_UP_FAILED = 'SIGN_UP_FAILED';

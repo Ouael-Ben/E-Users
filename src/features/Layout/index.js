@@ -7,6 +7,7 @@ import UserRoute from '../User/routes';
 import Login  from '../Login';
 import store from '../../config/store';
 import history from '../../utils/history';
+import Register from '../Register';
 
 export default function index() {
     return (
@@ -19,6 +20,7 @@ export default function index() {
                     <Route path='/'exact >Hello </Route>
                     <Route path='/users' children={props => <UserRoute {...props} />} />
                     <Route path= '/login' exact component={Login} />
+                    <Route path='/register' exact component={Register} />
                     {/* <Route path='/perimetre' children={props => <PerimetreRoute {...props} />} exact /> */}
 
                 </Switch>
